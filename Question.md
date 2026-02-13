@@ -19,11 +19,24 @@ Text(
 
 It's not user friendly to show the ETA time in a static format. Instead, we can enhance the user experience by displaying a dynamic countdown timer that updates in real-time. This way, users can easily see how much time is left until their order arrives without having to calculate it themselves.
 
-So instead of just time, we can show something like this:
+## Requirements
 
-- “Arriving in 12 mins”
-- “Arriving in 1 hr 5 mins”
-- “Arrived” (if the ETA is in the past)
+Implement the function below to generate a user-friendly arrival message based on the ETA:
+
+- If `eta` is `null`, return an empty string (no ETA available).
+- If the ETA is in the past (i.e., `eta` is before `DateTime.now()`), return `'Arrived'`.
+- Otherwise, return a countdown like `'Arriving in 1 hr 5 mins'` or `'Arriving in 12 mins'`.
+- Use `DateTime.now()` to calculate the difference.
+- Show hours and minutes as appropriate (omit hours if less than 1 hour).
+
+## Output Examples
+
+| Current Time        | ETA                 | Output                  |
+| ------------------- | ------------------- | ----------------------- |
+| 2026-02-13 12:00:00 | 2026-02-13 12:12:00 | Arriving in 12 mins     |
+| 2026-02-13 12:00:00 | 2026-02-13 13:05:00 | Arriving in 1 hr 5 mins |
+| 2026-02-13 12:00:00 | 2026-02-13 11:59:00 | Arrived                 |
+| 2026-02-13 12:00:00 | null                |                         |
 
 The function is given below:
 
